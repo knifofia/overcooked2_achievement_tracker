@@ -3,12 +3,12 @@ const SALT = new TextEncoder().encode(
 );
 
 const ACHIEVEMENTS = [
-  { name: "Soaker Cola", desc: "Laver 150 assiettes ou verres avec le pistolet à eau", stat: "S_DLC02_ItemsWashedWithWaterGun", goal: 150 },
-  { name: "Heat and Greet", desc: "Utiliser le soufflet sur les barbecues 500 fois", stat: "S_DLC02_BellowsUsedOnBBQCount", goal: 500 },
-  { name: "Tree Hater", desc: "Brûler 300 morceaux de bois", stat: "S_DLC05_BurntWoodCount", goal: 300 },
-  { name: "Backpack Hijack", desc: "Prendre 500 objets dans un sac à dos", stat: "S_DLC05_ItemsTakenFromBackpack", goal: 500 },
-  { name: "Coal of Duty", desc: "Brûler 300 seaux de charbon dans le four", stat: "S_DLC07_BurntCoalCount", goal: 300 },
-  { name: "Heads Will Roll", desc: "Couper 500 ingrédients avec la guillotine", stat: "S_DLC07_GuillotineChopCount", goal: 500 },
+  { name: "Soaker Cola", desc: "Wash 150 dirty plates or glasses with the water gun", stat: "S_DLC02_ItemsWashedWithWaterGun", goal: 150 },
+  { name: "Heat and Greet", desc: "Use the Bellows on BBQs 500 times", stat: "S_DLC02_BellowsUsedOnBBQCount", goal: 500 },
+  { name: "Tree Hater", desc: "Burn 300 pieces of wood", stat: "S_DLC05_BurntWoodCount", goal: 300 },
+  { name: "Backpack Hijack", desc: "Take 500 items from a backpack", stat: "S_DLC05_ItemsTakenFromBackpack", goal: 500 },
+  { name: "Coal of Duty", desc: "Burn 300 buckets of coal in the furnace", stat: "S_DLC07_BurntCoalCount", goal: 300 },
+  { name: "Heads Will Roll", desc: "Chop 500 ingredients using the guillotine", stat: "S_DLC07_GuillotineChopCount", goal: 500 },
 ];
 
 async function sha1(bytes) {
@@ -25,7 +25,7 @@ function concat(...arrays) {
   return out;
 }
 
-// Équivalent de PasswordDeriveBytes (.NET) avec 2 itérations et 32 octets
+// Equivalent of .NET PasswordDeriveBytes (2 iterations, 32 bytes)
 async function deriveKey(steamId) {
   const enc = new TextEncoder();
   const last = await sha1(concat(enc.encode(steamId), SALT));
@@ -38,11 +38,11 @@ async function deriveKey(steamId) {
 
 async function decryptSave(buffer, steamId) {
   const data = new Uint8Array(buffer);
-  if (data.length <= 20) throw new Error("Fichier trop petit.");
+  if (data.length <= 20) throw new Error("File too small.");
   const iv = data.slice(0, 16);
   const body = data.slice(16, data.length - 4);
   const key = await crypto.subtle.importKey("raw", await deriveKey(steamId), "AES-CBC", false, ["decrypt"]);
-  const invalid = new Error("Déchiffrement impossible : SteamID64 incorrect ou fichier invalide.");
+  const invalid = new Error("Decryption failed: wrong SteamID64 or invalid file.");
   let plain;
   try {
     plain = await crypto.subtle.decrypt({ name: "AES-CBC", iv }, key, body);

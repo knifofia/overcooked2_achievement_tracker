@@ -1,32 +1,32 @@
 # Overcooked! 2 – Achievement Tracker
 
-Page web qui affiche la progression des succès à compteur d'Overcooked! 2, que ni Steam ni le jeu n'affichent.
+A web page that shows your progress on Overcooked! 2's counter-based achievements, which neither Steam nor the game displays.
 
-**👉 [Ouvrir la page](https://knifofia.github.io/overcooked2_achievement_tracker/)**
+**👉 [Open the page](https://knifofia.github.io/overcooked2_achievement_tracker/)**
 
-## Utilisation
+## Usage
 
-1. Repérez votre dossier de sauvegarde : `%USERPROFILE%\AppData\LocalLow\Team17\Overcooked2\<SteamID64>\`. Le nom du dossier est votre SteamID64 (17 chiffres).
-2. Sur la page, choisissez le fichier `Meta_SaveFile.save` et saisissez votre SteamID64.
-3. Cliquez sur « Afficher la progression ».
+1. Find your save folder: `%USERPROFILE%\AppData\LocalLow\Team17\Overcooked2\<SteamID64>\`. The folder name is your SteamID64 (17 digits).
+2. On the page, choose `Meta_SaveFile.save` and enter your SteamID64.
+3. Click "Show progress".
 
-## Confidentialité
+## Privacy
 
-Tout est calculé dans votre navigateur (WebCrypto). Le fichier n'est envoyé nulle part et la page ne modifie jamais votre sauvegarde. Le code est dans `index.html` et `app.js`.
+Everything is computed in your browser (WebCrypto). The file is never uploaded and the page never modifies your save. The code is in `index.html` and `app.js`.
 
-## Succès suivis
+## Tracked achievements
 
-| Succès | Objectif |
+| Achievement | Goal |
 |---|---|
-| Soaker Cola | Laver 150 assiettes ou verres avec le pistolet à eau |
-| Heat and Greet | Utiliser le soufflet sur les barbecues 500 fois |
-| Tree Hater | Brûler 300 morceaux de bois |
-| Backpack Hijack | Prendre 500 objets dans un sac à dos |
-| Coal of Duty | Brûler 300 seaux de charbon dans le four |
-| Heads Will Roll | Couper 500 ingrédients avec la guillotine |
+| Soaker Cola | Wash 150 dirty plates or glasses with the water gun |
+| Heat and Greet | Use the Bellows on BBQs 500 times |
+| Tree Hater | Burn 300 pieces of wood |
+| Backpack Hijack | Take 500 items from a backpack |
+| Coal of Duty | Burn 300 buckets of coal in the furnace |
+| Heads Will Roll | Chop 500 ingredients using the guillotine |
 
-Toutes les autres statistiques de la sauvegarde sont consultables dans le bloc « Toutes les statistiques ».
+All other statistics stored in the save are available in the "All statistics" section.
 
-## Crédits et avertissement
+## Credits and disclaimer
 
-Le format de chiffrement des sauvegardes a été documenté par la communauté, notamment dans [OC2SaveDecryption](https://github.com/WTassoux/OC2SaveDecryption). Outil de fans non officiel, sans lien avec Team17, Ghost Town Games ou Valve.
+The save encryption format was documented by the community, notably in [OC2SaveDecryption](https://github.com/WTassoux/OC2SaveDecryption). Unofficial fan-made tool, not affiliated with Team17, Ghost Town Games or Valve.

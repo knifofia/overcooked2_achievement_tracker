@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Progression des succès Overcooked! 2</title>
+  <title>Overcooked! 2 Achievement Progress</title>
   <style>
     body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; background: #1b1b1f; color: #eee; }
     h1 { font-size: 1.5rem; }
@@ -26,19 +26,19 @@
   </style>
 </head>
 <body>
-  <h1>Progression des succès Overcooked! 2</h1>
+  <h1>Overcooked! 2 Achievement Progress</h1>
 
   <div class="card">
-    <p>Choisissez votre fichier <code>Meta_SaveFile.save</code> et indiquez votre SteamID64. Tout est calculé dans votre navigateur : <strong>le fichier n'est envoyé nulle part</strong>.</p>
-    <p class="hint">Emplacement : <code>%USERPROFILE%\AppData\LocalLow\Team17\Overcooked2\&lt;SteamID64&gt;\</code> (le SteamID64 est le nom du dossier, 17 chiffres).</p>
+    <p>Choose your <code>Meta_SaveFile.save</code> file and enter your SteamID64. Everything runs in your browser: <strong>the file is never uploaded anywhere</strong>.</p>
+    <p class="hint">Location: <code>%USERPROFILE%\AppData\LocalLow\Team17\Overcooked2\&lt;SteamID64&gt;\</code> (the SteamID64 is the folder name, 17 digits).</p>
 
-    <label for="file">Fichier Meta_SaveFile.save</label>
+    <label for="file">Meta_SaveFile.save file</label>
     <input id="file" type="file" accept=".save">
 
     <label for="steamid">SteamID64</label>
     <input id="steamid" type="text" inputmode="numeric" pattern="\d{17}" placeholder="76561198000000000" autocomplete="off">
 
-    <button id="go">Afficher la progression</button>
+    <button id="go">Show progress</button>
     <div id="error" class="error" hidden></div>
   </div>
 
@@ -46,13 +46,13 @@
     <div class="card" id="achievements"></div>
     <div class="card">
       <details>
-        <summary>Toutes les statistiques</summary>
+        <summary>All statistics</summary>
         <table id="stats"></table>
       </details>
     </div>
   </div>
 
-  <p class="note">Outil de fans non officiel, sans lien avec Team17, Ghost Town Games ou Valve. Il ne modifie jamais votre sauvegarde. Seuls les succès à compteur encore possibles dans les DLC sont suivis.</p>
+  <p class="note">Unofficial fan-made tool, not affiliated with Team17, Ghost Town Games or Valve. It never modifies your save. Only counter-based achievements are tracked.</p>
 
   <script src="app.js"></script>
   <script>
@@ -65,8 +65,8 @@
       try {
         const file = $("file").files[0];
         const steamId = $("steamid").value.trim();
-        if (!file) throw new Error("Choisissez un fichier .save.");
-        if (!/^\d{17}$/.test(steamId)) throw new Error("Le SteamID64 doit contenir 17 chiffres.");
+        if (!file) throw new Error("Choose a .save file.");
+        if (!/^\d{17}$/.test(steamId)) throw new Error("The SteamID64 must contain 17 digits.");
         const stats = extractStats(await decryptSave(await file.arrayBuffer(), steamId));
         render(stats);
       } catch (e) {
